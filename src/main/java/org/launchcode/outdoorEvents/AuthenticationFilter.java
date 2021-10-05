@@ -4,7 +4,7 @@ import org.launchcode.outdoorEvents.controllers.AuthenticationController;
 import org.launchcode.outdoorEvents.data.UserRepository;
 import org.launchcode.outdoorEvents.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class AuthenticationFilter extends HandlerInterceptorAdapter {
+public class AuthenticationFilter implements HandlerInterceptor {
 
     @Autowired
     UserRepository userRepository;
