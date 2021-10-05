@@ -48,7 +48,7 @@ public class EventController {
             return "events/index";
     }
 
-    @GetMapping("/events/create")
+    @GetMapping("events/create")
     public String displayCreateEventForm(Model model, HttpServletRequest request) {
             User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "Create Event");
@@ -59,7 +59,7 @@ public class EventController {
             return "events/create";
     }
 
-    @PostMapping("/events/create")
+    @PostMapping("events/create")
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, 
                                             Errors errors, Model model, HttpServletRequest request) {
             if(errors.hasErrors()) {
@@ -73,7 +73,7 @@ public class EventController {
             return "redirect:";
     }
 
-    @GetMapping("/events/delete")
+    @GetMapping("events/delete")
     public String displayDeleteEventForm(Model model) {
           model.addAttribute("title", "Delete Event");
           model.addAttribute("events", eventRepository.findAll());

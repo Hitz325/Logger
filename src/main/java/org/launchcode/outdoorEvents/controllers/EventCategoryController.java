@@ -58,10 +58,10 @@ public class EventCategoryController{
         }
 
         eventCategoryRepository.save(eventCategory);
-        return "redirect:/eventCategories/add";
+        return "redirect:eventCategories/add";
     }
 
-    @GetMapping("/eventCategories/delete")
+    @GetMapping("eventCategories/delete")
     public String displayDeleteEventForm(Model model) {
         model.addAttribute("title", "All Categories");
         model.addAttribute("eventCategories", eventCategoryRepository.findAll());
@@ -75,7 +75,7 @@ public class EventCategoryController{
             for (int id : eventIds) {
                 eventCategoryRepository.deleteById(id);
             }
-        }         return "redirect:/eventCategories/delete";
+        }         return "redirect:eventCategories/delete";
     }
 
 }

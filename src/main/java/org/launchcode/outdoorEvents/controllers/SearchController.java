@@ -36,7 +36,7 @@ public class SearchController {
         return "search";
     }
 
-    @PostMapping("/search/results")
+    @PostMapping("search/results")
     public String displaySearchResults(Model model, @RequestParam (defaultValue = "all") String searchType,  @RequestParam String searchTerm){
         Iterable<Event> events;
         if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
