@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-sourceCompatibility = '16'
+sourceCompatibility = '11'
 group = 'org.lauchcode'
 version = '0.0.1-SNAPSHOT'
 
