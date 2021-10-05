@@ -112,11 +112,11 @@ public class AuthenticationController {
     *
     */
 
-    @GetMapping("/user/login")
+    @GetMapping("user/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Login");
-        return "/user/login";
+        return "user/login";
     }
 
     @PostMapping("/user/login")
