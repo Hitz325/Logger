@@ -37,3 +37,15 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+springBoot {
+	mainClass = 'org.launchcode.outdoorEvents'
+}
+
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'org.launchcode.OutdoorEventsApplication'
+		)
+	}
+}
