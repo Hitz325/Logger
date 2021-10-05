@@ -38,14 +38,14 @@ test {
 	useJUnitPlatform()
 }
 
-springBoot {
-	mainClass = 'org.launchcode.outdoorEvents'
-}
+// springBoot {
+// 	mainClass = 'org.launchcode.outdoorEvents.OutdoorEventsApplication'
+// }
 
-jar {
-	manifest {
-		attributes(
-				'Main-Class': 'org.launchcode.OutdoorEventsApplication'
-		)
-	}
-}
+// jar {
+// 	manifest {
+// 		attributes(
+// 				'Main-Class': 'org.launchcode.outdoorEvents'
+// 		)
+// 	}
+// }
