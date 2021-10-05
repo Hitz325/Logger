@@ -37,7 +37,7 @@ public class EventController {
     @Autowired
     private AuthenticationController authenticationController;
 
-    @GetMapping("events")
+    @GetMapping("/events")
     public String displayAllEvents(Model model, HttpServletRequest request) {
             User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "All Events");
@@ -45,10 +45,10 @@ public class EventController {
             //model.addAttribute("events", eventRepository.findById(currentUser.getId()));
             // model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
             model.addAttribute("eventCategories", eventCategoryRepository.findAll());
-            return "events/index";
+            return "/events/index";
     }
 
-    @GetMapping("events/create")
+    @GetMapping("/events/create")
     public String displayCreateEventForm(Model model, HttpServletRequest request) {
             User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "Create Event");
@@ -56,15 +56,15 @@ public class EventController {
             model.addAttribute("eventCategories", eventCategoryRepository.findAll());
             model.addAttribute(new Event());
 
-            return "events/create";
+            return "/events/create";
     }
 
-    @PostMapping("events/create")
+    @PostMapping("/events/create")
     public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, 
                                             Errors errors, Model model, HttpServletRequest request) {
             if(errors.hasErrors()) {
               model.addAttribute("title", "Create Event");
-             return "events/create";
+             return "/events/create";
           }
             User currentUser = authenticationController.getUserFromSession(request.getSession());
 
@@ -73,14 +73,14 @@ public class EventController {
             return "redirect:";
     }
 
-    @GetMapping("events/delete")
+    @GetMapping("/events/delete")
     public String displayDeleteEventForm(Model model) {
           model.addAttribute("title", "Delete Event");
           model.addAttribute("events", eventRepository.findAll());
-            return "events/delete";
+            return "/events/delete";
     }
 
-    @PostMapping("events/delete")
+    @PostMapping("/events/delete")
     public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
         if (eventIds != null) {
             for (int id : eventIds) {
@@ -89,21 +89,21 @@ public class EventController {
         }         return "redirect:";
     }
 
-    @GetMapping("events/editSelect")
+    @GetMapping("/events/editSelect")
     public String selectEditEventForm(Model model) {
         model.addAttribute("title", "Edit Events");
         model.addAttribute("events", eventRepository.findAll());
 
-        return "events/editSelect";
+        return "/events/editSelect";
     }
 
-    @PostMapping("events/editSelect")
+    @PostMapping("/events/editSelect")
     public String processSelectEditEventForm(@RequestParam(required = false) int[] eventEdit, Model model) {
         if (eventEdit != null) {
             for (int id : eventEdit) {
                 model.addAttribute("eventEdit", eventRepository.findById(id));
             }
         }
-         return "events/editSelect";
+         return "/events/editSelect";
     }
 }

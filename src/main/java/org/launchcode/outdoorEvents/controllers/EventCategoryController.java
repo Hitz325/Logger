@@ -31,24 +31,24 @@ public class EventCategoryController{
     @Autowired
     private AuthenticationController authenticationController;
 
-    @GetMapping("eventCategories")
+    @GetMapping("/eventCategories")
     public String displayAllCategories(Model model, HttpServletRequest request) {
         User currentUser = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("title", "All Categories");
         //model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
         model.addAttribute("eventCategories", eventCategoryRepository.findAll());
         model.addAttribute("events", eventRepository.findAll());
-        return "eventCategories/index";
+        return "/eventCategories/index";
     }
 
-    @GetMapping("eventCategories/add")
+    @GetMapping("/eventCategories/add")
     public String renderCreateEventCategoryForm(Model model) {
         model.addAttribute("title", "Create Category");
         model.addAttribute(new EventCategory());
-        return "eventCategories/add";
+        return "/eventCategories/add";
     }
 
-    @PostMapping("eventCategories/add")
+    @PostMapping("/eventCategories/add")
     public String processCreateEventCategoryForm(@Valid @ModelAttribute EventCategory eventCategory, Errors errors,
                                                  Model model) {
 
@@ -58,10 +58,10 @@ public class EventCategoryController{
         }
 
         eventCategoryRepository.save(eventCategory);
-        return "redirect:eventCategories/add";
+        return "redirect:/eventCategories/add";
     }
 
-    @GetMapping("eventCategories/delete")
+    @GetMapping("/eventCategories/delete")
     public String displayDeleteEventForm(Model model) {
         model.addAttribute("title", "All Categories");
         model.addAttribute("eventCategories", eventCategoryRepository.findAll());
@@ -75,7 +75,7 @@ public class EventCategoryController{
             for (int id : eventIds) {
                 eventCategoryRepository.deleteById(id);
             }
-        }         return "redirect:eventCategories/delete";
+        }         return "redirect:/eventCategories/delete";
     }
 
 }
