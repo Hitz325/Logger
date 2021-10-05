@@ -4,7 +4,9 @@ import org.launchcode.outdoorEvents.controllers.AuthenticationController;
 import org.launchcode.outdoorEvents.data.UserRepository;
 import org.launchcode.outdoorEvents.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.support.RequestContextUtils;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +15,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class AuthenticationFilter implements HandlerInterceptorAdapter {
+public class AuthenticationFilter implements HandlerInterceptor {
 
     @Autowired
     UserRepository userRepository;
@@ -41,11 +43,11 @@ public class AuthenticationFilter implements HandlerInterceptorAdapter {
         }
 
         // The user is NOT logged in
-        response.sendRedirect("user/login");
+        response.sendRedirect("/user/login");
         return false;
     }
 
-    private static final List<String> whitelist = Arrays.asList("user/login", "user/register", "static", "images");
+    private static final List<String> whitelist = Arrays.asList("/user/login", "/user/register", "static", "images");
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
