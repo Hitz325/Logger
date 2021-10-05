@@ -40,13 +40,13 @@
                     <a class="nav-link dropdown-toggle" id="navbarEventTypeDropdown" role="button"
                        data-bs-toggle="dropdown">Event Types</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarEventTypeDropdown">
-                        <li><a class="dropdown-item" href="/event-categories">All Event Types</a></li>
+                        <li><a class="dropdown-item" href="/eventCategories">All Event Types</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/event-categories/addType">Create Event Type</a></li>
+                        <li><a class="dropdown-item" href="/eventCategories/add">Create Event Type</a></li>
                         <li><hr class="dropdown-divider"></li>
 <!--                        <li><a class="dropdown-item" href="/events/editSelect">Edit Event</a></li>-->
 <!--                        <li><hr class="dropdown-divider"></li>-->
-                        <li><a class="dropdown-item" href="/event-categories/deleteType">Delete Event Event</a></li>
+                        <li><a class="dropdown-item" href="/eventCategories/delete">Delete Event Event</a></li>
                         <li><hr class="dropdown-divider"></li>
                     </ul>
                 </li>
@@ -65,7 +65,7 @@
             </ul>
             <form class="d-flex" th:action="@{/search/results}" method = "post">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                           name="searchTerm" id="searchTerm" required/>
+                           name="searchTerm" id="searchTerm" />
                     <button class="btn btn-outline-success" type="submit" value="Search">Search</button>
             <span th:each="column : ${columns}" hidden>
                 <input class="form-control me-2"

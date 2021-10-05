@@ -34,7 +34,7 @@ public class EventData {
         if (fieldName.equals("name")){
             theValue = event.getName();
         } else if (fieldName.equals("Category")){
-            theValue = event.getType().toString();
+            theValue = event.getEventCategory().toString();
         } else {
             theValue = event.getDescription().toString();
         }
@@ -54,7 +54,7 @@ public class EventData {
                 results.add(event);
             } else if (event.getDescription().toLowerCase().contains(lower_val)) {
                 results.add(event);
-            } else if (event.getType().toString().toLowerCase().contains(lower_val)) {
+            } else if (event.getEventCategory().toString().toLowerCase().contains(lower_val)) {
                 results.add(event);
             } else if (event.toString().toLowerCase().contains(lower_val)) {
                 results.add(event);

@@ -23,6 +23,12 @@
     </tr>
 </table>
 
+<br>
+<table class="table table-striped-green table-hover">
+    <tr th:each="event : ${events}">
+        <td th:text="${event.name}"></td>
+    </tr>
+</table>
 
 <div id="map"></div>
 <script th:inline="javascript">

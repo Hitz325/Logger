@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,30 +42,35 @@ public class EventController {
             User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "All Events");
             model.addAttribute("events", eventRepository.findAll());
+            //model.addAttribute("events", eventRepository.findById(currentUser.getId()));
+            // model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
+            model.addAttribute("eventCategories", eventCategoryRepository.findAll());
             return "events/index";
     }
 
     @GetMapping("/events/create")
-    public String displayCreateEventForm(Model model) {
+    public String displayCreateEventForm(Model model, HttpServletRequest request) {
+            User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "Create Event");
-            model.addAttribute("eventTypes", eventCategoryRepository.findAll());
+            //model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
+            model.addAttribute("eventCategories", eventCategoryRepository.findAll());
             model.addAttribute(new Event());
 
             return "events/create";
     }
 
     @PostMapping("/events/create")
-    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, @ModelAttribute @Valid String type,
-                                             Errors errors, Model model, HttpServletRequest request) {
-          if(errors.hasErrors()) {
+    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, 
+                                            Errors errors, Model model, HttpServletRequest request) {
+            if(errors.hasErrors()) {
               model.addAttribute("title", "Create Event");
              return "events/create";
           }
-          newEvent.setType(type);
-          User currentUser = authenticationController.getUserFromSession(request.getSession());
-          currentUser.setEvent(newEvent);
-          eventRepository.save(newEvent);
-          return "redirect:";
+            User currentUser = authenticationController.getUserFromSession(request.getSession());
+
+            currentUser.setEvent(newEvent);
+            eventRepository.save(newEvent);
+            return "redirect:";
     }
 
     @GetMapping("/events/delete")

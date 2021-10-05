@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-</head>
-<body class="container">
+<head th:replace="fragments :: head"></head>
+<body class="container-fluid">
 
 <header th:replace="fragments :: header"></header>
 
-<div class="container body-content">
-
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <form th:action="@{/search/results}" method = "post">
+    <form method="post" th:action="@{/search/results}" style="max-width: 600px; margin: 0 auto" autocomplete="off">
         <h2>Search by:</h2>
 
         <p>
@@ -37,17 +34,17 @@
     <hr />
 
 
-    <table class="job-listing">
+    <table>
         <tr th:each="event : ${events}">
             <td>
                 <p>
                     Event title:
-                    <a th:text="${event.title}"></a>
+                    <a th:text="${event.name}"></a>
                 </p>
                 <p th:text="${'User: ' + 'user here'}"></p>
                 <p>
                     Event type:
-                    <a  th:text="${event.type}"></a>
+                    <a  th:text="${event.eventCategory}"></a>
                 </p>
                 <p>
                     Location:
@@ -63,6 +60,7 @@
     </table>
 
 </div>
+<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

@@ -29,21 +29,21 @@
 
             <div class="form-group row">
                 <div class="col-6">
-                    <label class="sr-only"><br>Event Type</label>
-                        <select th:field="${event.type}" class="form-control">
-                            <option th:each="type : ${eventTypes}"
-                                    th:value="${type.id}"
-                                    th:text="${type.name}">
+                    <label class="sr-only"><br>Event Category</label>
+                        <select th:field="${event.eventCategory}" class="form-control">
+                            <option th:each="eventCategory : ${eventCategories}"
+                                    th:value="${eventCategory.id}"
+                                    th:text="${eventCategory.name}">
                             </option>
                         </select>
-                    <a href="/event-categories/">Add Event Type</a>
+                    <a href="/eventCategories/">Add Event Category</a>
                 </div>
-                    <p class="error" th:errors="${event.type}"></p>
+                    <p class="error" th:errors="${event.eventCategory}"></p>
             </div>
 
             <div class="form_group button">
                 <div class="col-6"><br><br>
-                    <button type="submit" class="btn btn-success" value="createEvent"/>Create</button/>
+                    <button type="submit" class="btn btn-success" value="createEvent" />Create</button>
                 </div>
             </div>
         </form>

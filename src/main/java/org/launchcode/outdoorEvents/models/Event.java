@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class Event extends AbstractEntity {
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="user_id")
     private User user;
 
@@ -17,14 +17,14 @@ public class Event extends AbstractEntity {
     @Size(max = 500, message = "Description too long!")
     private String description;
 
-    @NotBlank(message = "Type is required")
-    //@ManyToOne
-    private String type;
+    @NotBlank(message = "Category is required")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name="event_category_id")
+    private EventCategory eventCategory;
 
-    public Event(String description, String type) {
-        super();
+    public Event(String description, EventCategory eventCategory) {
         this.description = description;
-        this.type = type;
+        this.eventCategory = eventCategory;
     }
 
     public Event() {}
@@ -33,9 +33,9 @@ public class Event extends AbstractEntity {
 
     public void setDescription(String description) {this.description = description;}
 
-    public String getType() {return type;}
+    public EventCategory getEventCategory() {return eventCategory;}
 
-    public void setType(String type) {this.type = type;}
+    public void setEventCategory(EventCategory eventCategory) {this.eventCategory = eventCategory;}
 
 
 }

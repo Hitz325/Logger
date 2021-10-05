@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container-fluid">
+
+<header th:replace="fragments :: header"></header>
+
+<!-- <p th:unless="${eventCategories} and ${eventCategories.size()}">no categories!</p> -->
+
+<div class="m-3">
+  <div class="form-group row">
+     <div class="col-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Event Types</th>
+            </tr>
+          </thead>
+            <tr th:each="eventCategory : ${eventCategories}">
+              <td th:text="${eventCategory.name}"></td>
+            </tr>
+        </table>
+        <br>
+        <a href="/eventCategories/add">Add Event Category</a>
+        <a href="/eventCategories/delete">Delete Event Category</a>
+      </div>
+  </div>
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

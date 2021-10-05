@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping("search")
 public class SearchController {
 
     @Autowired
@@ -31,7 +30,7 @@ public class SearchController {
         columnChoices.put("categories", "Categories");
     }
 
-    @RequestMapping("")
+    @GetMapping("search")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
         return "search";

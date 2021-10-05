@@ -31,49 +31,51 @@ public class EventCategoryController{
     @Autowired
     private AuthenticationController authenticationController;
 
-    @GetMapping("event-categories")
-    public String displayAllCategories(Model model) {
+    @GetMapping("eventCategories")
+    public String displayAllCategories(Model model, HttpServletRequest request) {
+        User currentUser = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("title", "All Categories");
-        model.addAttribute("types", eventCategoryRepository.findAll());
+        //model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
+        model.addAttribute("eventCategories", eventCategoryRepository.findAll());
         model.addAttribute("events", eventRepository.findAll());
-        return "event-categories/index";
+        return "eventCategories/index";
     }
 
-    @GetMapping("event-categories/addType")
+    @GetMapping("eventCategories/add")
     public String renderCreateEventCategoryForm(Model model) {
         model.addAttribute("title", "Create Category");
         model.addAttribute(new EventCategory());
-        return "event-categories/addType";
+        return "eventCategories/add";
     }
 
-    @PostMapping("event-categories/addType")
+    @PostMapping("eventCategories/add")
     public String processCreateEventCategoryForm(@Valid @ModelAttribute EventCategory eventCategory, Errors errors,
                                                  Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Category");
-            return "event-categories/addType";
+            return "eventCategories/add";
         }
 
         eventCategoryRepository.save(eventCategory);
-        return "redirect:/event-categories/addType";
+        return "redirect:/eventCategories/add";
     }
 
-    @GetMapping("/event-categories/deleteType")
+    @GetMapping("/eventCategories/delete")
     public String displayDeleteEventForm(Model model) {
         model.addAttribute("title", "All Categories");
-        model.addAttribute("types", eventCategoryRepository.findAll());
+        model.addAttribute("eventCategories", eventCategoryRepository.findAll());
         model.addAttribute("events", eventRepository.findAll());
-        return "event-categories/deleteType";
+        return "eventCategories/delete";
     }
 
-    @PostMapping("event-categories/deleteType")
+    @PostMapping("eventCategories/delete")
     public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
         if (eventIds != null) {
             for (int id : eventIds) {
                 eventCategoryRepository.deleteById(id);
             }
-        }         return "redirect:/event-categories/deleteType";
+        }         return "redirect:/eventCategories/delete";
     }
 
 }
