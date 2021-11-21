@@ -149,7 +149,7 @@ public class AuthenticationController {
         User currentUser = getUserFromSession(request.getSession());
         model.addAttribute("hello", "Hello, "+ currentUser.getFirstName() +" "+ currentUser.getLastName());
 
-        return "redirect:";
+        return "redirect:/";
     }
 
     /*
