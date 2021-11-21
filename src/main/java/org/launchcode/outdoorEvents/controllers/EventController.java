@@ -86,7 +86,7 @@ public class EventController {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
             }
-        }         return "redirect:/";
+        }         return "redirect:/events";
     }
 
     @GetMapping("/events/editSelect")
