@@ -70,7 +70,7 @@ public class EventController {
 
             currentUser.setEvent(newEvent);
             eventRepository.save(newEvent);
-            return "redirect:";
+            return "redirect:/";
     }
 
     @GetMapping("/events/delete")
@@ -86,7 +86,7 @@ public class EventController {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
             }
-        }         return "redirect:";
+        }         return "redirect:/";
     }
 
     @GetMapping("/events/editSelect")
