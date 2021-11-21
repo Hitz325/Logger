@@ -33,7 +33,7 @@ public class SearchController {
     @GetMapping("/search")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
-        return "/search";
+        return "search";
     }
 
     @PostMapping("/search/results")
@@ -48,7 +48,7 @@ public class SearchController {
         model.addAttribute("title", "events sorted by " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("title", "Events with " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("events", events);
-        return "/search";
+        return "search";
     }
 }
 //TODO fix return mapping.

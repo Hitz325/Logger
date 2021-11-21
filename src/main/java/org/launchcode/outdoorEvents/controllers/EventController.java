@@ -45,7 +45,7 @@ public class EventController {
             //model.addAttribute("events", eventRepository.findById(currentUser.getId()));
             // model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
             model.addAttribute("eventCategories", eventCategoryRepository.findAll());
-            return "/events/index";
+            return "events/index";
     }
 
     @GetMapping("/events/create")
@@ -56,7 +56,7 @@ public class EventController {
             model.addAttribute("eventCategories", eventCategoryRepository.findAll());
             model.addAttribute(new Event());
 
-            return "/events/create";
+            return "events/create";
     }
 
     @PostMapping("/events/create")
@@ -64,7 +64,7 @@ public class EventController {
                                             Errors errors, Model model, HttpServletRequest request) {
             if(errors.hasErrors()) {
               model.addAttribute("title", "Create Event");
-             return "/events/create";
+             return "events/create";
           }
             User currentUser = authenticationController.getUserFromSession(request.getSession());
 
@@ -77,7 +77,7 @@ public class EventController {
     public String displayDeleteEventForm(Model model) {
           model.addAttribute("title", "Delete Event");
           model.addAttribute("events", eventRepository.findAll());
-            return "/events/delete";
+            return "events/delete";
     }
 
     @PostMapping("/events/delete")
@@ -94,7 +94,7 @@ public class EventController {
         model.addAttribute("title", "Edit Events");
         model.addAttribute("events", eventRepository.findAll());
 
-        return "/events/editSelect";
+        return "events/editSelect";
     }
 
     @PostMapping("/events/editSelect")
@@ -104,6 +104,6 @@ public class EventController {
                 model.addAttribute("eventEdit", eventRepository.findById(id));
             }
         }
-         return "/events/editSelect";
+         return "events/editSelect";
     }
 }

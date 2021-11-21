@@ -61,7 +61,7 @@ public class AuthenticationController {
     public String showSignUpForm(Model model){
         model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register");
-        return "/user/register";
+        return "user/register";
     }
 
     @PostMapping("/user/register")
@@ -71,7 +71,7 @@ public class AuthenticationController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
-            return "/user/register";
+            return "user/register";
         }
 
         User existingUser = userRepository.findByName(registerFormDTO.getName());
@@ -79,7 +79,7 @@ public class AuthenticationController {
         if (existingUser != null) {
             errors.rejectValue("name", "name.alreadyexists", "A user with that username already exists");
             model.addAttribute("title", "Register");
-            return "/user/register";
+            return "user/register";
         }
 
         String password = registerFormDTO.getPassword();
@@ -87,7 +87,7 @@ public class AuthenticationController {
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Register");
-            return "/user/register";
+            return "user/register";
         }
 
         User existingEmail = userRepository.findByEmail(registerFormDTO.getEmail());
@@ -95,7 +95,7 @@ public class AuthenticationController {
         if (existingEmail != null) {
             errors.rejectValue("email", "email.alreadyexists", "A user with that email address already exists");
             model.addAttribute("title", "Register");
-            return "/user/register";
+            return "user/register";
         }
 
         User newUser = new User(registerFormDTO.getName(), registerFormDTO.getPassword(),
@@ -161,7 +161,7 @@ public class AuthenticationController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/user/login";
+        return "redirect:user/login";
     }
 
 }

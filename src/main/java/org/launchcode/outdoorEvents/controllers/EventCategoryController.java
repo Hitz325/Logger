@@ -38,14 +38,14 @@ public class EventCategoryController{
         //model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
         model.addAttribute("eventCategories", eventCategoryRepository.findAll());
         model.addAttribute("events", eventRepository.findAll());
-        return "/eventCategories/index";
+        return "eventCategories/index";
     }
 
     @GetMapping("/eventCategories/add")
     public String renderCreateEventCategoryForm(Model model) {
         model.addAttribute("title", "Create Category");
         model.addAttribute(new EventCategory());
-        return "/eventCategories/add";
+        return "eventCategories/add";
     }
 
     @PostMapping("/eventCategories/add")
@@ -58,7 +58,7 @@ public class EventCategoryController{
         }
 
         eventCategoryRepository.save(eventCategory);
-        return "redirect:/eventCategories/add";
+        return "redirect:eventCategories/add";
     }
 
     @GetMapping("/eventCategories/delete")
@@ -75,7 +75,7 @@ public class EventCategoryController{
             for (int id : eventIds) {
                 eventCategoryRepository.deleteById(id);
             }
-        }         return "redirect:/eventCategories/delete";
+        }         return "redirect:eventCategories/delete";
     }
 
 }
