@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class AuthenticationController {
 
     @Autowired
