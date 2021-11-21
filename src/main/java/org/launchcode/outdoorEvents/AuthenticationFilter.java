@@ -73,7 +73,4 @@ public class AuthenticationFilter implements HandlerInterceptor {
             modelAndView.addObject("user", user);
         }
     }
-
-}
-
 }

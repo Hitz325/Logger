@@ -29,7 +29,7 @@ public class HomeController{
     @Autowired
     private AuthenticationController authenticationController;
 
-    @GetMapping
+    @GetMapping("/")
     public String displayDashboard(Model model, HttpServletRequest request){
         User currentUser = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("hello", "Hello, "+ currentUser.getFirstName() +" "+ currentUser.getLastName());
