@@ -69,7 +69,7 @@ public class EventCategoryController{
         return "eventCategories/delete";
     }
 
-    @PostMapping("eventCategories/delete")
+    @PostMapping("/eventCategories/delete")
     public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
         if (eventIds != null) {
             for (int id : eventIds) {
