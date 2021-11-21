@@ -58,7 +58,7 @@ public class EventCategoryController{
         }
 
         eventCategoryRepository.save(eventCategory);
-        return "eventCategories/add";
+        return "redirect:eventCategories/add";
     }
 
     @GetMapping("/eventCategories/delete")
@@ -75,7 +75,7 @@ public class EventCategoryController{
             for (int id : eventIds) {
                 eventCategoryRepository.deleteById(id);
             }
-        }         return "eventCategories/delete";
+        }         return "redirect:eventCategories/delete";
     }
 
 }
