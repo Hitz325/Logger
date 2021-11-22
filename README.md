@@ -16,11 +16,12 @@ This project could have applications for local, state, and federal parks departm
 
 ## Technologies
 - Java
+- JavaScript
 - Spring Boot
 - ClearDB
 - GoogleMaps API
 - Bootstrap
-- JavaScript
+- Heroku
 
 ## What we'll have to learn
 For location data we will have to learn how to make API calls to GoogleMaps. We will also need to learn how to use the ReCaptcha API for user authentication.
