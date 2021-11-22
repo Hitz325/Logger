@@ -29,3 +29,6 @@ For location data we will have to learn how to make API calls to GoogleMaps. We 
 
 ## Project tracker
 https://trello.com/b/tUy1OLVB/zac-o-group-a
+
+##Updates
+-11/21/21: Succsessfully deployed the app through Heroku and added a clearDB remote database to make the app persistent. URL: https://logger-heroku.herokuapp.com/
