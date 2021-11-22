@@ -17,12 +17,9 @@ This project could have applications for local, state, and federal parks departm
 ## Technologies
 - Java
 - Spring Boot
-- MySQL
-- Hibernate
-- Thymeleaf templates
+- ClearDB
 - GoogleMaps API
 - Bootstrap
-- ReCaptcha
 - JavaScript
 
 ## What we'll have to learn
