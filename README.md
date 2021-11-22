@@ -1,4 +1,5 @@
-# Outdoor Event Log Project Outline
+# Outdoor Event Log(Logger) Project Outline
+(https://logger-heroku.herokuapp.com/)
 
 ## Overview
 
