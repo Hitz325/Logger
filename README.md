@@ -32,6 +32,6 @@ https://trello.com/b/tUy1OLVB/zac-o-group-a
 
 ## Updates
 -11/21/21: Succsessfully deployed the app through Heroku and added a clearDB remote database to make the app persistent. URL: https://logger-heroku.herokuapp.com/
-The project still contains its fair share of bugs, and the functionality isn't 100% there. While the GoogleMap API displays correctly, I have not gotten around to implementing the ReCaptcha to authenticate users creating accounts.
-Location data added to the Google API is also something else that needs doing. Search output still needs to be neatly formatted. 
-Major bugs to work out: Deleting events, had this working before, but after reworking how the data is stored and how it related to each other, this function broke. Also only able to delete other Event Categories, but not the original one in the database. Last major bug to work out is tying the events to the user. Which seems to work correctly, but I know there is something wrong somewhere.
+The project still contains its fair share of bugs, and the functionality isn't 100% there. I have not gotten around to implementing the ReCaptcha to authenticate users creating accounts.
+While the GoogleMap API displays correctly, location data added to the Google API is also something else that needs doing. Search output still needs to be neatly formatted. 
+Major bugs to work out: Deleting events, had this working before, but after reworking how the data is stored and how it relates to each other, this function broke. Also able to delete Event Categories, but not the original one in the database. Last major bug to work out is tying the events to the user. Which seems to work correctly, but there are still a few bugs to work out.
