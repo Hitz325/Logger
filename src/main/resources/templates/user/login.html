@@ -2,49 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="container-fluid">
+<body>
+  <div class="container">
+    <div class="col-md-auto">
 
-  <header th:replace="fragments :: header"></header>
+        <header th:replace="fragments :: header"></header>
 
-  <div class="m-3">
-    <form method="post" style="max-width: 600px; margin: 0 auto" autocomplete="off">
+        <div class="m-3">
+          <form method="post" style="max-width: 600px; margin: 0 auto" autocomplete="off">
 
-      <div class="form_group row">
-        <div class="col-6">
-          <label class="sr-only"  for="username"><br>
-            <input id="username" type="text" class="form-control"
-                   placeholder="Username" th:field="${loginFormDTO.name}" required />
-          </label>
+            <div class="form_group row">
+              <div class="col-6">
+                <label class="sr-only"  for="username"><br>
+                  <input id="username" type="text" class="form-control"
+                        placeholder="Username" th:field="${loginFormDTO.name}" required />
+                </label>
+              </div>
+                <p class="error" th:errors="${loginFormDTO.name}"></p>
+            </div>
+
+          <div class="form_group row">
+            <div class="col-6">
+              <label class="sr-only"  for="password"><br>
+                <input id="password" type="password" class="form-control" placeholder="Password"
+                      th:field="${loginFormDTO.password}" required>
+              </label>
+                <p class="error" th:errors="${loginFormDTO.password}"></p>
+            </div>
+          </div>
+
+            <div class="form_group button">
+              <div class="col-6"><br><br>
+                <button type="submit" class="btn btn-success" value="login">Login</button/>
+              </div>
+            </div>
+
+          <div class="form_group row">
+            <div class="col-6"><br>
+              <p>Don't have an account? <a href="/user/register">Register for one.</a></p>
+            </div>
+          </div>
+
+          </form>
         </div>
-          <p class="error" th:errors="${loginFormDTO.name}"></p>
-      </div>
 
-    <div class="form_group row">
-      <div class="col-6">
-        <label class="sr-only"  for="password"><br>
-          <input id="password" type="password" class="form-control" placeholder="Password"
-                 th:field="${loginFormDTO.password}" required>
-        </label>
-          <p class="error" th:errors="${loginFormDTO.password}"></p>
-      </div>
+      <footer th:replace="fragments :: footer"></footer>
     </div>
-
-      <div class="form_group button">
-        <div class="col-6"><br><br>
-          <button type="submit" class="btn btn-success" value="login">Login</button/>
-        </div>
-      </div>
-
-    <div class="form_group row">
-      <div class="col-6"><br>
-        <p>Don't have an account? <a href="/user/register">Register for one.</a></p>
-      </div>
-    </div>
-
-    </form>
   </div>
-
-<footer th:replace="fragments :: footer"></footer>
 
 </body>
 </html>

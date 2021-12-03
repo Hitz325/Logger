@@ -2,77 +2,81 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="container-fluid">
+<body>
+  <div class="container">
+    <div class="col-md-auto">
 
-  <header th:replace="fragments :: header"></header>
-    <div class="m-3">
-      <form method="post" style="max-width: 600px; margin: 0 auto" autocomplete="off"/>
-        <div class="form_group row">
-          <div class="col-6">
-            <lable class="sr-only" for="username"><br>
-              <input id="username" type="text" class="form-control" placeholder="Username"
-                     th:field="${registerFormDTO.name}" required />
-            </lable>
-          </div>
-          <p class="error" th:errors="${registerFormDTO.name}"></p>
-        </div>
+        <header th:replace="fragments :: header"></header>
+          <div class="m-3">
+            <form method="post" style="max-width: 600px; margin: 0 auto" autocomplete="off"/>
+              <div class="form_group row">
+                <div class="col-6">
+                  <lable class="sr-only" for="username"><br>
+                    <input id="username" type="text" class="form-control" placeholder="Username"
+                          th:field="${registerFormDTO.name}" required />
+                  </lable>
+                </div>
+                <p class="error" th:errors="${registerFormDTO.name}"></p>
+              </div>
 
-        <div class="form_group row">
-          <div class="col-6">
-            <lable class="sr-only" for="password"><br>
-              <input id="password" type="password" class="form-control" placeholder="Password"
-                     th:field="${registerFormDTO.password}" required />
-            </lable>
-          </div>
-          <p class="error" th:errors="${registerFormDTO.password}"></p>
-        </div>
+              <div class="form_group row">
+                <div class="col-6">
+                  <lable class="sr-only" for="password"><br>
+                    <input id="password" type="password" class="form-control" placeholder="Password"
+                          th:field="${registerFormDTO.password}" required />
+                  </lable>
+                </div>
+                <p class="error" th:errors="${registerFormDTO.password}"></p>
+              </div>
 
-        <div class="form_group row">
-          <div class="col-6">
-            <lable class="sr-only" for="verifyPassword"><br>
-              <input id="verifyPassword" type="password" class="form-control" placeholder="Verify password"
-                     th:field="${registerFormDTO.verifyPassword}" required />
-            </lable>
-          </div>
-        </div>
+              <div class="form_group row">
+                <div class="col-6">
+                  <lable class="sr-only" for="verifyPassword"><br>
+                    <input id="verifyPassword" type="password" class="form-control" placeholder="Verify password"
+                          th:field="${registerFormDTO.verifyPassword}" required />
+                  </lable>
+                </div>
+              </div>
 
-        <div class="form_group row">
-          <div class="col-6">
-            <lable class="sr-only" for="firstName"><br>
-              <input id="firstName" type="text" class="form-control" placeholder="First name"
-                     th:field="${registerFormDTO.firstName}" required />
-            </lable>
-          </div>
-        </div>
+              <div class="form_group row">
+                <div class="col-6">
+                  <lable class="sr-only" for="firstName"><br>
+                    <input id="firstName" type="text" class="form-control" placeholder="First name"
+                          th:field="${registerFormDTO.firstName}" required />
+                  </lable>
+                </div>
+              </div>
 
-        <div class="form_group row">
-          <div class="col-6">
-            <lable class="sr-only" for="lastName"><br>
-              <input id="lastName" type="text" class="form-control" placeholder="Last name"
-                     th:field="${registerFormDTO.lastName}" required />
-            </lable>
-          </div>
-        </div>
+              <div class="form_group row">
+                <div class="col-6">
+                  <lable class="sr-only" for="lastName"><br>
+                    <input id="lastName" type="text" class="form-control" placeholder="Last name"
+                          th:field="${registerFormDTO.lastName}" required />
+                  </lable>
+                </div>
+              </div>
 
-        <div class="form_group row">
-          <div class="col-6">
-          <lable class="sr-only" for="inputEmail"><br>
-            <input id="inputEmail" type="email" class="form-control" placeholder="Email address"
-                   th:field="${registerFormDTO.email}" required />
-          </lable>
-          </div>
-          <p class="error" th:errors="${registerFormDTO.email}"></p>
-        </div>
+              <div class="form_group row">
+                <div class="col-6">
+                <lable class="sr-only" for="inputEmail"><br>
+                  <input id="inputEmail" type="email" class="form-control" placeholder="Email address"
+                        th:field="${registerFormDTO.email}" required />
+                </lable>
+                </div>
+                <p class="error" th:errors="${registerFormDTO.email}"></p>
+              </div>
 
-        <div class="form_group button">
-          <div class="col-6"><br><br>
-            <button type="submit" class="btn btn-success" value="register"/>Sign Up</button/>
+              <div class="form_group button">
+                <div class="col-6"><br><br>
+                  <button type="submit" class="btn btn-success" value="register"/>Sign Up</button/>
+                </div>
+              </div>
+            </form>
           </div>
-        </div>
-      </form>
+
+        <footer th:replace="fragments :: footer"></footer>
     </div>
-
-  <footer th:replace="fragments :: footer"></footer>
+  </div>
 
 </body>
 </html>
