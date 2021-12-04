@@ -9,7 +9,6 @@ import java.util.List;
 @Entity
 public class Event extends AbstractEntity {
 
-    @NotBlank(message = "Description is required")
     @Size(max = 500, message = "Description too long!")
     private String description;
 
@@ -17,7 +16,6 @@ public class Event extends AbstractEntity {
     private User user;
     
     @ManyToOne
-    @NotBlank(message = "Category is required")
     private EventCategory eventCategory;
 
     // @OneToMany(mappedBy="user")
