@@ -20,6 +20,7 @@
 
             <br>
             <table class="table table-striped-green table-hover">
+                <!-- <tr><text th:text="${userEvents}"></text></tr> -->
                 <tr th:each="event : ${userEvents}">
                     <td th:text="${event.name}"></td>
                 </tr>

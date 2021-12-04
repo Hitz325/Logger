@@ -9,25 +9,31 @@ import java.util.List;
 @Entity
 public class Event extends AbstractEntity {
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name="user_id")
-    private User user;
-
     @NotBlank(message = "Description is required")
     @Size(max = 500, message = "Description too long!")
     private String description;
 
+    @ManyToOne
+    private User user;
+    
+    @ManyToOne
     @NotBlank(message = "Category is required")
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name="event_category_id")
     private EventCategory eventCategory;
 
+    // @OneToMany(mappedBy="user")
+    // private Location locations;
+
     public Event(String description, EventCategory eventCategory) {
+        super();
         this.description = description;
         this.eventCategory = eventCategory;
     }
 
     public Event() {}
+
+    public User getUser() { return user;}
+
+    public void setUser(User user) {this.user = user;}
 
     public String getDescription() { return description;}
 

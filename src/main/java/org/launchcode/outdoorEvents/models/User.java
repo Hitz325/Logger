@@ -26,14 +26,6 @@ public class User extends AbstractEntity{
     @NotNull
     private String email;
 
-
-    @ManyToOne
-    @JoinColumn(name="event_id")
-    private Event event;
-
-    // @OneToMany(mappedBy="user")
-    // private List<Location> locations = new ArrayList<>();
-
     public User(){};
 
     public User(String name, String password, String firstName, String lastName, String email) {
@@ -43,15 +35,6 @@ public class User extends AbstractEntity{
         this.lastName = lastName;
         this.email = email;
     }
-
-
-    public Event getEvent() { return event; }
-
-    public void setEvent(Event event) { this.event = event;}
-
-    // public List<Location> getLocations() {return locations;}
-
-    // public void setLocations(List<Location> locations) {this.locations = locations;}
 
     public String getFirstName() {return firstName;}
 

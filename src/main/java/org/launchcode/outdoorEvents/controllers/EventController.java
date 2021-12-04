@@ -68,7 +68,7 @@ public class EventController {
           }
             User currentUser = authenticationController.getUserFromSession(request.getSession());
 
-            currentUser.setEvent(newEvent);
+            newEvent.setUser(currentUser);
             eventRepository.save(newEvent);
             return "redirect:/";
     }

@@ -33,7 +33,7 @@ public class HomeController{
     public String displayDashboard(Model model, HttpServletRequest request){
         User currentUser = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("hello", "Hello, "+ currentUser.getFirstName() +" "+ currentUser.getLastName());
-        model.addAttribute("userEvents", currentUser.getEvent());
+        model.addAttribute("userEvents", eventRepository.findAllByUser_Id(currentUser.getId()));
         model.addAttribute("events", eventRepository.findAll());
         model.addAttribute("locations", locationRepository.findAll());
         model.addAttribute("title", "Logger");
