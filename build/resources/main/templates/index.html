@@ -19,15 +19,16 @@
             <text th:text="${hello}"></text>
 
             <br>
-            <table class="table table-striped-green table-hover">
-                <!-- <tr><text th:text="${userEvents}"></text></tr> -->
+            <table class="table table-success table-striped table-hover caption-top">
+                <caption>Your Event Titles</caption>
                 <tr th:each="event : ${userEvents}">
                     <td th:text="${event.name}"></td>
                 </tr>
             </table>
 
             <br>
-            <table class="table table-striped-green table-hover">
+            <table class="table table-striped table-success table-hover caption-top">
+                <caption>Event Titles Posted by You and Other Users</caption>
                 <tr th:each="event : ${events}">
                     <td th:text="${event.name}"></td>
                 </tr>

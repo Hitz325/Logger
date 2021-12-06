@@ -42,8 +42,8 @@ public class EventController {
             User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "All Events");
             model.addAttribute("events", eventRepository.findAll());
-            //model.addAttribute("events", eventRepository.findById(currentUser.getId()));
-            // model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
+            model.addAttribute("users", userRepository.findAll());
+            model.addAttribute("userEvents", eventRepository.findAllByUser_Id(currentUser.getId()));
             model.addAttribute("eventCategories", eventCategoryRepository.findAll());
             return "events/index";
     }
@@ -52,7 +52,6 @@ public class EventController {
     public String displayCreateEventForm(Model model, HttpServletRequest request) {
             User currentUser = authenticationController.getUserFromSession(request.getSession());
             model.addAttribute("title", "Create Event");
-            //model.addAttribute("eventCategories", eventCategoryRepository.findById(currentUser.getId()));
             model.addAttribute("eventCategories", eventCategoryRepository.findAll());
             model.addAttribute(new Event());
 
@@ -70,14 +69,15 @@ public class EventController {
 
             newEvent.setUser(currentUser);
             eventRepository.save(newEvent);
-            return "redirect:/";
+            return "redirect:/events";
     }
 
     @GetMapping("/events/delete")
-    public String displayDeleteEventForm(Model model) {
-          model.addAttribute("title", "Delete Event");
-          model.addAttribute("events", eventRepository.findAll());
-            return "events/delete";
+    public String displayDeleteEventForm(Model model, HttpServletRequest request) {
+        User currentUser = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("title", "Delete Event");
+        model.addAttribute("userEvents", eventRepository.findAllByUser_Id(currentUser.getId()));
+        return "events/delete";
     }
 
     @PostMapping("/events/delete")
@@ -89,21 +89,41 @@ public class EventController {
         }         return "redirect:/events";
     }
 
-    @GetMapping("/events/editSelect")
-    public String selectEditEventForm(Model model) {
+    @GetMapping("/events/edit")
+    public String selectEditEventForm(Model model, HttpServletRequest request) {
+        User currentUser = authenticationController.getUserFromSession(request.getSession());
         model.addAttribute("title", "Edit Events");
-        model.addAttribute("events", eventRepository.findAll());
-
-        return "events/editSelect";
+        model.addAttribute("userEvents", eventRepository.findAllByUser_Id(currentUser.getId()));
+        model.addAttribute("eventCategories", eventCategoryRepository.findAll());
+        return "events/edit";
     }
 
-    @PostMapping("/events/editSelect")
-    public String processSelectEditEventForm(@RequestParam(required = false) int[] eventEdit, Model model) {
-        if (eventEdit != null) {
-            for (int id : eventEdit) {
-                model.addAttribute("eventEdit", eventRepository.findById(id));
-            }
-        }
-         return "events/editSelect";
+    @PostMapping("/events/edit")
+    public String processSelectEditEventForm(@ModelAttribute @Valid Event event, Integer eventId,
+                                                Errors errors, Model model, HttpServletRequest request) {
+        User currentUser = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("event", eventRepository.findById(eventId));
+        model.addAttribute("eventCategories", eventCategoryRepository.findAll());
+        event.setUser(currentUser);
+        eventRepository.save(event);
+        return "/events/editSelect";    
     }
+
+    // @GetMapping("/events/editSelect")
+    // public String displayEditSelectionEventForm(Model model, HttpServletRequest request, @ModelAttribute @Valid Event event) {
+    //     model.addAttribute("eventName", event.getName());
+    //     model.addAttribute("eventDescription", event.getDescription());
+    //     model.addAttribute("eventCategory", event.getEventCategory());
+    //     model.addAttribute("eventCategories", eventCategoryRepository.findAll());
+    //     return "events/editSelect";
+    // }
+
+    // @PostMapping("/events/editSelect")
+    // public String processEditSelectionEventForm(@ModelAttribute @Valid Event event,
+    //                                             Errors errors, Model model, HttpServletRequest request) {
+        
+        
+    //     eventRepository.save(event);
+    //     return "redirect:/events";
+    // }
 }
