@@ -13,10 +13,10 @@ public class Event extends AbstractEntity {
     private String description;
 
     @ManyToOne(cascade=CascadeType.ALL)
-    private User user = new User();
+    private User user;
     
     @ManyToOne(cascade=CascadeType.ALL)
-    private EventCategory eventCategory = new EventCategory();
+    private EventCategory eventCategory;
 
     // @OneToMany(mappedBy="user")
     // private Location locations;
