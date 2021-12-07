@@ -46,7 +46,8 @@ public class AuthenticationFilter implements HandlerInterceptor {
             return true;
         }
 
-        User user = authenticationController.getUserFromSession(request.getSession());
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
 
         // The user is logged in
         if (user != null) {
@@ -65,7 +66,8 @@ public class AuthenticationFilter implements HandlerInterceptor {
             Object handler,
             ModelAndView modelAndView) throws Exception {
 
-        User user = authenticationController.getUserFromSession(request.getSession());
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
 
         if (user != null) {
             modelAndView.addObject("user", user);

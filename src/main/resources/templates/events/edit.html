@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label>
                                 <span th:text="${event.name}"></span>
-                                <input type="radio" name="eventId" th:value="${event.id}" class="form-check-input">
+                                <input type="radio" th:name="eventId" th:value="${event.id}" class="form-check-input">
                             </label>
                         </div>
                     </th:block>

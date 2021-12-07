@@ -102,7 +102,7 @@ public class EventController {
     public String processSelectEditEventForm(@ModelAttribute @Valid Event event, Integer eventId,
                                                 Errors errors, Model model, HttpServletRequest request) {
         User currentUser = authenticationController.getUserFromSession(request.getSession());
-        model.addAttribute("event", eventRepository.findById(eventId));
+        model.addAttribute("event", eventRepository.findById(eventId).get());
         model.addAttribute("eventCategories", eventCategoryRepository.findAll());
         event.setUser(currentUser);
         eventRepository.save(event);
@@ -110,20 +110,17 @@ public class EventController {
     }
 
     // @GetMapping("/events/editSelect")
-    // public String displayEditSelectionEventForm(Model model, HttpServletRequest request, @ModelAttribute @Valid Event event) {
-    //     model.addAttribute("eventName", event.getName());
-    //     model.addAttribute("eventDescription", event.getDescription());
-    //     model.addAttribute("eventCategory", event.getEventCategory());
+    // public String processSelectEditEventForm(Integer eventId,
+    //                                                             Errors errors, Model model, HttpServletRequest request) {
+        
+    //     User currentUser = authenticationController.getUserFromSession(request.getSession());
+    //     //model.addAttribute("event", eventRepository.findById(event.getId()));
     //     model.addAttribute("eventCategories", eventCategoryRepository.findAll());
-    //     return "events/editSelect";
-    // }
+    //     Event eventToUpdate = eventRepository.findById(eventId).get();
+    //     model.addAttribute("eventToUpdate", eventToUpdate);
+    //     eventToUpdate.setUser(currentUser);
 
-    // @PostMapping("/events/editSelect")
-    // public String processEditSelectionEventForm(@ModelAttribute @Valid Event event,
-    //                                             Errors errors, Model model, HttpServletRequest request) {
-        
-        
-    //     eventRepository.save(event);
-    //     return "redirect:/events";
+    //     //eventRepository.save(event);
+    //     return "/events/editSelect";    
     // }
 }

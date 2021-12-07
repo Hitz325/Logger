@@ -12,18 +12,17 @@ public class Event extends AbstractEntity {
     @Size(max = 500, message = "Description too long!")
     private String description;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private User user;
     
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne //(cascade=CascadeType.ALL)
     private EventCategory eventCategory;
 
-    // @OneToMany(mappedBy="user")
-    // private Location locations;
-
-    public Event(String description) {
+    public Event(String description, EventCategory eventCategory, User user) {
         super();
         this.description = description;
+        this.eventCategory = eventCategory;
+        this.user = user;
     }
 
     public Event() {}
